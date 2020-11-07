@@ -16,7 +16,7 @@
                         <h4><i class="fa fa-angle-right"></i> <a href="{{route('admin.service.create')}}" type="button" class="btn btn-theme">Add Service</a></h4>
                         <div class="adv-table">
                             <table class="table table-striped table-advance table-hover" id="hidden-table-info">
-                                <hr>
+                                <br>
                                 <thead>
                                 <tr>
                                     <th>SN</th>
@@ -35,8 +35,8 @@
                                     <td class="hidden-phone">{{ $key + 1 }}</td>
                                     <td>
                                     <a target="_blank" href="{{ route('service.detail',$service->slug)}}" target="_blank">
-                                            @if ($service->images->first()->image)
-                                            <img style="height: 30px;"  src="{{asset('storage/services/'.$service->images->first()->image)}}" alt="">
+                                            @if ($service->images()->first()->image)
+                                            <img style="height: 30px;"  src="{{asset('storage/services/'.$service->images()->first()->image)}}" alt="">
                                             @else
                                             <img style="height: 30px;" src="{{asset('assets/backend/img/demo_image.png')}}" alt="" />
                                             @endif
@@ -50,7 +50,7 @@
                                     <td>{{$service->price}}</td>
                                     <td><span class="label label-info label-mini">publish</span></td>
                                     <td>
-                                        <a href="{{route('admin.service.show',$service->id)}}" class="btn btn-success btn-xs"><i class="fa fa-check"></i></a>
+                                        <a target="_blank" href="{{ route('service.detail',$service->slug)}}" class="btn btn-success btn-xs"><i class="fa fa-check"></i></a>
                                         <a href="{{route('admin.service.edit',$service->id)}}" class="btn btn-primary btn-xs"><i class="fa fa-pencil"></i></a>
                                         <button class="btn btn-danger btn-xs" onclick="deleteServicet({{ $service->id }})"><i class="fa fa-trash-o "></i></button>
                                         <form id="delete-form-{{ $service->id }}" action="{{ route('admin.service.destroy',$service->id) }}" method="post" style="display:none;">

@@ -48,7 +48,7 @@ class RegisterController extends Controller
         {
             $this->redirectTo = route('admin.dashboard');
         }else{
-            $this->redirectTo = route('customer.dashboard');
+            $this->redirectTo = route('author.dashboard');
         }
         $this->middleware('guest');
     }
@@ -75,17 +75,20 @@ class RegisterController extends Controller
      */
     protected function validator(array $data)
     {
-        return Validator::make($data, [
-            'first_name' => ['required', 'string', 'max:40'],
-            'last_name' => ['nullable', 'string', 'max:40'],
-            'username' => ['required', 'string', 'max:30', 'unique:users'],
-            'email' => ['required', 'string', 'email', 'max:100', 'unique:users'],
-            'phone' => ['required', 'string', 'max:16', 'unique:users'],
-            'password' => ['required', 'string', 'min:8', 'confirmed'],
-            'division' => ['required', 'numeric'],
-            'district' => ['required', 'numeric'],
-            'street_address' => ['required', 'max:100'],
-        ]);
+
+        // return Validator::make($data, [
+        //     'first_name' => ['required', 'string', 'max:40'],
+        //     'last_name' => ['required', 'string', 'max:40'],
+        //     'username' => ['required', 'string', 'max:30', 'unique:users'],
+        //     'email' => ['required', 'string', 'email', 'max:100', 'unique:users'],
+        //     'phone' => ['required', 'string', 'max:16', 'unique:users'],
+        //     'password' => ['required', 'string', 'min:8', 'confirmed'],
+        //     'division' => ['required', 'numeric'],
+        //     'district' => ['required', 'numeric'],
+        //     'street_address' => ['required', 'max:100'],
+        // ]);
+
+
     }
 
     /**
@@ -96,6 +99,19 @@ class RegisterController extends Controller
      */
     protected function register(Request $request)
     {
+
+        $request->validate([
+            'first_name' => ['required', 'string', 'max:40'],
+            'last_name' => ['required', 'string', 'max:40'],
+            'username' => ['required', 'string', 'max:30', 'unique:users'],
+            'email' => ['required', 'string', 'email', 'max:100', 'unique:users'],
+            'phone' => ['required', 'string', 'max:16', 'unique:users'],
+            'password' => ['required', 'string', 'min:8', 'confirmed'],
+            'division' => ['required', 'numeric'],
+            'district' => ['required', 'numeric'],
+            'street_address' => ['required', 'max:100'],
+        ]);
+
         $user =  User::create([
                 'role_id' => 2,
                 'first_name' => $request->first_name,

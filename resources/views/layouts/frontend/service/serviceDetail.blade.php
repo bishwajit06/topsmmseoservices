@@ -76,14 +76,16 @@ Home | Online Social media Market
                                     <div class="rating-reviews m-t-20">
                                         <div class="row">
                                             <div class="col-sm-4">
-                                            @if ($service->reviews->count() >0)
+                                                @if ($service->reviews->count() >0)
                                                 <div class="">
                                                     <span class="fa fa-star {{$service->reviews->sum('star')/$service->reviews->count() > 0.5 ? 'checked' : ''}}"></span>
                                                     <span class="fa fa-star {{$service->reviews->sum('star')/$service->reviews->count() > 1.5 ? 'checked' : ''}}"></span>
                                                     <span class="fa fa-star {{$service->reviews->sum('star')/$service->reviews->count() > 2.5 ? 'checked' : ''}}"></span>
                                                     <span class="fa fa-star {{$service->reviews->sum('star')/$service->reviews->count() > 3.5 ? 'checked' : ''}}"></span>
                                                     <span class="fa fa-star {{$service->reviews->sum('star')/$service->reviews->count() > 4.5 ? 'checked' : ''}}"></span>
-                                                    <span>{{ $service->reviews->sum('star')/ $service->reviews->count()}}</span>
+
+                                                    <span>{{ $service->reviews->count() > 0 ? round($service->reviews->sum('star')/$service->reviews->count(),1) : 'No Reviews'}}</span>
+
                                                 </div>
                                             @else
                                                 <span class="fa fa-star"></span>
@@ -254,7 +256,7 @@ Home | Online Social media Market
                                                                         <input type="text" class="form-control txt" id="name" name="name" placeholder="">
                                                                     </div><!-- /.form-group -->
                                                                     <div class="form-group">
-                                                                    <input type="hidden" class="form-control txt" id="name" name="service_id" value="{{$service->id }}" placeholder="">
+                                                                    <input type="hidden" class="form-control txt" id="service_id" name="service_id" value="{{$service->id }}" placeholder="">
                                                                     </div><!-- /.form-group -->
                                                                     <div class="form-group">
                                                                         <label for="exampleInputSummary">Avatar Image <span class="astk">*</span></label>
@@ -342,7 +344,7 @@ Home | Online Social media Market
                                                     <span class="fa fa-star {{$service->reviews->sum('star')/$service->reviews->count() > 2.5 ? 'checked' : ''}}"></span>
                                                     <span class="fa fa-star {{$service->reviews->sum('star')/$service->reviews->count() > 3.5 ? 'checked' : ''}}"></span>
                                                     <span class="fa fa-star {{$service->reviews->sum('star')/$service->reviews->count() > 4.5 ? 'checked' : ''}}"></span>
-                                                    <span>{{ $service->reviews->sum('star')/ $service->reviews->count()}}</span>
+                                                    <span>{{ $service->reviews->count() > 0 ? round($service->reviews->sum('star')/$service->reviews->count(),1) : 'No Reviews'}}</span>
                                                 </div>
                                             @else
                                                     <span class="fa fa-star"></span>

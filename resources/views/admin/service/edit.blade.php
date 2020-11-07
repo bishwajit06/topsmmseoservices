@@ -87,7 +87,6 @@
                                     <label class="control-label col-md-2">Service Image Upload</label>
                                     <div class="col-md-10">
                                         <div class="row">
-                                            @if ($service->images->first()->image)
                                             @foreach ($serviceImages as $image)
                                             <div class="col-md-2">
                                                 <div class="fileupload fileupload-new" data-provides="fileupload">
@@ -99,15 +98,13 @@
                                                 <span class="btn btn-theme02 btn-file">
                                                   <span class="fileupload-new"><i class="fa fa-paperclip"></i> Select image</span>
                                                 <span class="fileupload-exists"><i class="fa fa-undo"></i> Change</span>
-                                                <input type="file" class="default" name="image[]" value="{{$image->id}}"/>
+                                                <input type="file" class="default" name="image[]"/>
                                                 </span>
                                                         <a href="#" class="btn btn-theme04 fileupload-exists" data-dismiss="fileupload"><i class="fa fa-trash-o"></i> Remove</a>
                                                     </div>
                                                 </div>
                                             </div>
                                             @endforeach
-                                            @else
-
                                             <div class="col-md-2">
                                                 <div class="fileupload fileupload-new" data-provides="fileupload">
                                                     <div class="fileupload-new thumbnail" style="width: 200px; height: 150px;">
@@ -118,13 +115,12 @@
                                                 <span class="btn btn-theme02 btn-file">
                                                   <span class="fileupload-new"><i class="fa fa-paperclip"></i> Select image</span>
                                                 <span class="fileupload-exists"><i class="fa fa-undo"></i> Change</span>
-                                                <input type="file" class="default" name="image[]" value=""/>
+                                                <input type="file" class="default" name="image[]"/>
                                                 </span>
                                                         <a href="#" class="btn btn-theme04 fileupload-exists" data-dismiss="fileupload"><i class="fa fa-trash-o"></i> Remove</a>
                                                     </div>
                                                 </div>
                                             </div>
-                                            @endif
 
                                         </div>
                                     </div>

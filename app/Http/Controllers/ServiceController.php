@@ -18,7 +18,7 @@ class ServiceController extends Controller
     {
         $service = Service::where('slug', $slug)->first();
         $randomServices = Service::take('12')->inRandomOrder()->get();
-        //$serviceImages = ServiceImage::where('service_id',$slug)->get();
+        $serviceImages = ServiceImage::where('service_id',$slug)->get();
         return view('layouts.frontend.service.serviceDetail',compact('service','serviceImages','randomServices'));
     }
 }

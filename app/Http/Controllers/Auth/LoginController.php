@@ -43,7 +43,7 @@ class LoginController extends Controller
         {
             $this->redirectTo = route('admin.dashboard');
         }else{
-            $this->redirectTo = route('customer.dashboard');
+            $this->redirectTo = route('author.dashboard');
         }
         $this->middleware('guest')->except('logout');
     }
@@ -64,7 +64,7 @@ class LoginController extends Controller
                     if (Auth::check() && Auth::user()->role->id == 1){
                         return redirect()->route('admin.dashboard');
                     }else{
-                        return redirect()->route('customer.dashboard');
+                        return redirect()->route('author.dashboard');
                     }
                 }else{
                     session()->flash('sticky_error', 'login invalid');

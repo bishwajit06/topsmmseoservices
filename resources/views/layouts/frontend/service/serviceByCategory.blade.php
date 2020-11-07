@@ -54,8 +54,6 @@ Home | Online Social media Market
               <div class="container-fluid">
                 <div class="caption vertical-top text-left">
                   <div class="big-text"> {{ $category->name }} </div>
-                  <div class="excerpt hidden-sm hidden-md"> Save up to 49% off </div>
-                  <div class="excerpt-normal hidden-sm hidden-md"> Lorem ipsum dolor sit amet, consectetur adipiscing elit </div>
                 </div>
                 <!-- /.caption -->
               </div>
@@ -157,7 +155,7 @@ Home | Online Social media Market
                                             <span class="fa fa-star {{$service->reviews->sum('star')/$service->reviews->count() > 2.5 ? 'checked' : ''}}"></span>
                                             <span class="fa fa-star {{$service->reviews->sum('star')/$service->reviews->count() > 3.5 ? 'checked' : ''}}"></span>
                                             <span class="fa fa-star {{$service->reviews->sum('star')/$service->reviews->count() > 4.5 ? 'checked' : ''}}"></span>
-                                            <span>{{ $service->reviews->sum('star')/ $service->reviews->count()}}</span>
+                                            <span>{{ $service->reviews->count() > 0 ? round($service->reviews->sum('star')/$service->reviews->count(),1) : 'No Reviews'}}</span>
                                         </div>
                                     @else
                                             <span class="fa fa-star"></span>

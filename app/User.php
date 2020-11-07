@@ -66,4 +66,9 @@ class User extends Authenticatable
     {
         return $this->belongsTo('App\District');
     }
+
+    public function posts()
+    {
+        return $this->hasMany('App\Post');
+    }
 }

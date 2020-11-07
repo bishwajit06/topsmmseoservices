@@ -40,7 +40,7 @@ class VerificationController extends Controller
         {
             $this->redirectTo = route('admin.dashboard');
         }else{
-            $this->redirectTo = route('customer.dashboard');
+            $this->redirectTo = route('author.dashboard');
         }
         $this->middleware('auth');
         $this->middleware('signed')->only('verify');

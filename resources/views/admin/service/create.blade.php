@@ -25,7 +25,7 @@
                                 <div class="form-group ">
                                     <label for="cname" class="control-label col-lg-2">Service Name (required)</label>
                                     <div class="col-lg-8">
-                                        <input class=" form-control" id="name" name="name" type="text"/>
+                                        <input class=" form-control" id="name" name="name" type="text" value="{{old('name')}}"/>
                                     </div>
                                 </div>
                                 <div class="form-group ">
@@ -72,14 +72,14 @@
                                 <div class="form-group ">
                                     <label for="short_description" class="control-label col-lg-2">Short Description</label>
                                     <div class="col-lg-8">
-                                        <textarea class="form-control" id="tinymce" name="short_description" rows="10"></textarea>
+                                        <textarea class="form-control" id="tinymce" name="short_description" rows="10">{{old('short_description')}}</textarea>
                                     </div>
                                 </div>
 
                                 <div class="form-group ">
                                     <label for="ccomment" class="control-label col-lg-2">Service Description</label>
                                     <div class="col-lg-8">
-                                        <textarea class="form-control" id="tinymce" name="description" rows="10"></textarea>
+                                        <textarea class="form-control" id="tinymce" name="description" rows="10"> {{old('description')}} </textarea>
                                     </div>
                                 </div>
 
@@ -103,6 +103,24 @@
                                                     </div>
                                                 </div>
                                             </div>
+
+                                            <div class="col-md-2">
+                                                <div class="fileupload fileupload-new" data-provides="fileupload">
+                                                    <div class="fileupload-new thumbnail" style="width: 200px; height: 150px;">
+                                                        <img src="{{asset('assets/backend/img/demo_image.png')}}" alt="" />
+                                                    </div>
+                                                    <div class="fileupload-preview fileupload-exists thumbnail" style="max-width: 200px; max-height: 150px; line-height: 20px;"></div>
+                                                    <div>
+                                                <span class="btn btn-theme02 btn-file">
+                                                  <span class="fileupload-new"><i class="fa fa-paperclip"></i> Select image</span>
+                                                <span class="fileupload-exists"><i class="fa fa-undo"></i> Change</span>
+                                                <input type="file" class="default" name="image[]"/>
+                                                </span>
+                                                        <a href="#" class="btn btn-theme04 fileupload-exists" data-dismiss="fileupload"><i class="fa fa-trash-o"></i> Remove</a>
+                                                    </div>
+                                                </div>
+                                            </div>
+
                                         </div>
                                     </div>
                                 </div>

@@ -7,43 +7,42 @@
     <div class="container">
       <div class="header-top-inner">
 		<div class="pull-left m-t-10">
-			<p>Email: support@topsmmseoservices | Contact: +8801916003132</p>
+			<p>{!!  substr(strip_tags($setting->top_contact), 0, 150) !!}</p>
 		</div>
         <div class="cnt-account">
 		  <ul class="list-unstyled">
-			<li><a href="{{ route('faq')}}"><i class="icon fa fa-user"></i>FAQ</a></li>
-            <li><a href="{{ route('terms-conditions')}}"><i class="icon fa fa-user"></i>Terms & Condition</a></li>
-			@guest
+                @foreach (Harimayco\Menu\Models\Menus::where('name','topMenu')->first()->items as $topMenu)
+                    <li><a href="{{ $topMenu['link'] }}"><i class="icon fa fa-user"></i>{{ $topMenu['label'] }}</a></li>
+                @endforeach
+			    @guest
+
+                    @if (Route::has('register'))
                         <li class="nav-item">
                             <a href="{{ route('login') }}"><i class="icon fa fa-lock"></i>{{ __(' Login') }}</a>
                         </li>
-                        @if (Route::has('register'))
-                            <li class="nav-item">
-                                <a href="{{ route('register') }}"><i class="icon fa fa-check"></i>{{ __(' Register') }}</a>
+                    @endif
+                    @else
+                    <li class="dropdown dropdown-small"> <a href="#" class="dropdown-toggle" data-hover="dropdown" data-toggle="dropdown"><span class="value"><i class="icon fa fa-user"></i> &nbsp{{Auth::user()->first_name }} {{Auth::user()->last_name }} </span><b class="caret"></b></a>
+                        <ul class="dropdown-menu">
+                            @if(Auth::user()->role_id ==1)
+                                <li><a href="{{ route('admin.dashboard') }}">Dashboard</a></li>
+                                @else
+                                <li><a href="{{ route('author.dashboard') }}">Dashboard</a></li>
+                            @endif
+                            <li>
+                                <a href="{{ route('logout') }}"
+                                    onclick="event.preventDefault();
+                                                document.getElementById('logout-form').submit();">
+                                    {{ __('Logout') }}
+                                </a>
                             </li>
-                        @endif
-                        @else
-                        <li class="dropdown dropdown-small"> <a href="#" class="dropdown-toggle" data-hover="dropdown" data-toggle="dropdown"><span class="value"><i class="icon fa fa-user"></i> &nbsp{{Auth::user()->first_name }} {{Auth::user()->last_name }} </span><b class="caret"></b></a>
-                            <ul class="dropdown-menu">
-                                @if(Auth::user()->role_id ==1)
-                                    <li><a href="{{ route('admin.dashboard') }}">Dashboard</a></li>
-                                    @else
-                                    <li><a href="{{ route('customer.dashboard') }}">Dashboard</a></li>
-                                @endif
-                                <li>
-                                    <a class="dropdown-item" href="{{ route('logout') }}"
-                                       onclick="event.preventDefault();
-                                                     document.getElementById('logout-form').submit();">
-                                        {{ __('Logout') }}
-                                    </a>
-                                </li>
 
-                                <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
-                                    @csrf
-                                </form>
-                            </ul>
-                        </li>
-                        @endguest
+                            <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                                @csrf
+                            </form>
+                        </ul>
+                    </li>
+                @endguest
           </ul>
         </div>
         <div class="clearfix"></div>
@@ -59,7 +58,7 @@
       <div class="row">
         <div class="col-xs-12 col-sm-12 col-md-3 logo-holder">
           <!-- ============================================================= LOGO ============================================================= -->
-        <div class="logo"> <a href="{{ route('home')}}"> <img src="{{ asset('assets/images/logo.png')}}" alt="logo"> </a> </div>
+        <div class="logo"> <a href="{{ route('home')}}"> <img src="{{ URL::asset('storage/setting/logo/'.$setting->logo) }}" alt="logo"> </a> </div>
           <!-- /.logo -->
           <!-- ============================================================= LOGO : END ============================================================= --> </div>
         <!-- /.logo-holder -->
@@ -68,7 +67,7 @@
           <!-- /.contact-row -->
           <!-- ============================================================= SEARCH AREA ============================================================= -->
           <div class="head-main-title">
-            <h3>SOCIAL MEDIA MARKETING AND SEO SERVICES</h3>
+            <h3>{!!  substr(strip_tags($setting->header_title), 0, 150) !!}</h3>
           </div>
           <!-- /.search-area -->
           <!-- ============================================================= SEARCH AREA : END ============================================================= --> </div>
@@ -88,6 +87,7 @@
   <!-- /.main-header -->
 
   <!-- ============================================== NAVBAR ============================================== -->
+
   <div class="header-nav animate-dropdown">
     <div class="container">
       <div class="yamm navbar navbar-default" role="navigation">
@@ -103,9 +103,11 @@
                     <li class="{{ Request::is('/') ? 'active' : '' }} dropdown yamm-fw">
                         <a href="{{ route('home')}}">Home</a>
                     </li>
+
                     @foreach($public_menu as $menu)
-                    <li class="{{ $menu['child'] ? 'dropdown' : '' }}">
-                        <a class="{{ $menu['child'] ? 'dropdown-toggle' : '' }}"  href="{{ $menu['link'] }}" data-hover="{{ $menu['child'] ? 'dropdown' : '' }}" data-toggle="{{ $menu['child'] ? 'dropdown' : '' }}" title="">{{ $menu['label'] }}</a>                 <ul class="dropdown-menu pages">
+                    <li class="{{ $menu['child'] ? 'dropdown' : ''}} {{ Request::is('category/'.Str::slug($menu['label'])) ? 'active' : ''}} {{ Request::is('page/'.Str::slug($menu['label'])) ? 'active' : ''}} {{ Request::is('/'.Str::slug($menu['label'])) ? 'active' : ''}} {{ Request::is('/contact') ? 'active' : ''}} {{ Request::is('http://127.0.0.1:8000/allPosts') ? 'active' : ''}}">
+                        <a class="{{ $menu['child'] ? 'dropdown-toggle' : '' }}"  href="{{ $menu['link'] }}" data-hover="{{ $menu['child'] ? 'dropdown' : '' }}" data-toggle="{{ $menu['child'] ? 'dropdown' : '' }}" title="">{{ $menu['label'] }}</a>
+                        <ul class="dropdown-menu pages">
                             <li>
                                 <div class="yamm-content">
                                     <div class="row">
@@ -149,3 +151,6 @@
 
 </header>
 <!-- ============================================== HEADER : END ============================================== -->
+
+
+

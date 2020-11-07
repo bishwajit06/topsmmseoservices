@@ -7,10 +7,11 @@
     <meta name="description" content="">
     <meta name="author" content="Dashboard">
     <meta name="keyword" content="Dashboard, Bootstrap, Admin, Template, Theme, Responsive, Fluid, Retina">
-    <title>Ecommerce | Admin Panel</title>
+    <link rel="icon" href="{{ URL::asset('assets/images/favicon.png') }}" type="image/x-icon"/>
+    <title>TopsmmseoServices | Admin Panel</title>
 
     <!-- Favicons -->
-    <link href="{{asset('assets/backend/img/favicon.png')}}" rel="icon">
+    <link href="{{asset('assets/images/favicon.png')}}" rel="icon">
     <link href="{{asset('assets/backend/img/apple-touch-icon.png')}}" rel="apple-touch-icon">
 
     <!-- Bootstrap core CSS -->
@@ -25,7 +26,9 @@
     <!-- Custom styles for this template -->
     <link href="{{asset('assets/backend/css/style.css')}}" rel="stylesheet">
     <link href="{{asset('assets/backend/css/style-responsive.css')}}" rel="stylesheet">
+    @notifyCss
     <script src="{{asset('assets/backend/lib/chart-master/Chart.js')}}"></script>
+
 
     @stack('css')
 
@@ -77,6 +80,8 @@
 <script type="text/javascript" src="{{asset('assets/backend/lib/gritter/js/jquery.gritter.js')}}"></script>
 <script type="text/javascript" src="{{asset('assets/backend/lib/gritter-conf.js')}}"></script>
 
+
+
 <script type="application/javascript">
     function myNavFunction(id) {
         $("#date-popover").hide();
@@ -100,6 +105,8 @@
 </script>
 @stack('js')
 
+<x:notify-messages />
+@notifyJs
 </body>
 
 </html>

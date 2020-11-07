@@ -140,7 +140,7 @@ Home | Online Social media Market
             <div class="row">
               <div class="col-md-12">
                 <div class="wide-banner cnt-strip">
-                  <div class="image"> <img class="img-responsive" src="assets/images/banners/home-banner.jpg" alt=""> </div>
+                  <div class="image"> <img class="img-responsive" src="{{ URL::asset('storage/setting/home_banner/'.$setting->home_banner) }}" alt="banner"> </div>
                   <div class="strip strip-text">
                     <div class="strip-inner">
                       <h2 class="text-right">The Perfect Growth<br>
@@ -230,103 +230,32 @@ Home | Online Social media Market
             <h3 class="section-title">latest form blog</h3>
             <div class="blog-slider-container outer-top-xs">
               <div class="owl-carousel blog-slider custom-carousel">
-                <div class="item">
-                  <div class="blog-post">
-                    <div class="blog-post-image">
-                      <div class="image"> <a href="blog.html"><img src="assets/images/blog-post/post1.jpg" alt=""></a> </div>
+                @foreach ($latestPosts as $post)
+                    <div class="item">
+                        <div class="blog-post">
+                        <div class="blog-post-image">
+                            <div class="image">
+                                @if ($post->image)
+                                    <a href="{{route('post.details',$post->slug)}}"><img src="{{ asset('storage/post/'.$post->image)}}" alt=""></a>
+                                @else
+                                    <a href="{{route('post.details',$post->slug)}}"><img src=" {{asset('assets/backend/img/demo_image.png')}} " alt=""></a>
+                                @endif
+                            </div>
+                        </div>
+                        <!-- /.blog-post-image -->
+
+                        <div class="blog-post-info text-left">
+                            <h3 class="name"><a href="{{route('post.details',$post->slug)}}"> {{$post->title}} </a></h3>
+                            <span class="info">{{$post->user->first_name. ' ' .$post->user->last_name}} &nbsp;|&nbsp; {{ $post->created_at->diffForHumans() }} </span>
+                            <p class="text"> {!!  substr(strip_tags($post->body), 0, 110) !!} ....</p>
+                            <a href="{{route('post.details',$post->slug)}}" class="lnk btn btn-primary">Read more</a> </div>
+                        <!-- /.blog-post-info -->
+
+                        </div>
+                        <!-- /.blog-post -->
                     </div>
-                    <!-- /.blog-post-image -->
-
-                    <div class="blog-post-info text-left">
-                      <h3 class="name"><a href="#">Voluptatem accusantium doloremque laudantium</a></h3>
-                      <span class="info">By Jone Doe &nbsp;|&nbsp; 21 March 2016 </span>
-                      <p class="text">Sed quia non numquam eius modi tempora incidunt ut labore et dolore magnam aliquam quaerat voluptatem.</p>
-                      <a href="#" class="lnk btn btn-primary">Read more</a> </div>
-                    <!-- /.blog-post-info -->
-
-                  </div>
-                  <!-- /.blog-post -->
-                </div>
-                <!-- /.item -->
-
-                <div class="item">
-                  <div class="blog-post">
-                    <div class="blog-post-image">
-                      <div class="image"> <a href="blog.html"><img src="assets/images/blog-post/post2.jpg" alt=""></a> </div>
-                    </div>
-                    <!-- /.blog-post-image -->
-
-                    <div class="blog-post-info text-left">
-                      <h3 class="name"><a href="#">Dolorem eum fugiat quo voluptas nulla pariatur</a></h3>
-                      <span class="info">By Saraha Smith &nbsp;|&nbsp; 21 March 2016 </span>
-                      <p class="text">Sed quia non numquam eius modi tempora incidunt ut labore et dolore magnam aliquam quaerat voluptatem.</p>
-                      <a href="#" class="lnk btn btn-primary">Read more</a> </div>
-                    <!-- /.blog-post-info -->
-
-                  </div>
-                  <!-- /.blog-post -->
-                </div>
-                <!-- /.item -->
-
-                <!-- /.item -->
-
-                <div class="item">
-                  <div class="blog-post">
-                    <div class="blog-post-image">
-                      <div class="image"> <a href="blog.html"><img src="assets/images/blog-post/post1.jpg" alt=""></a> </div>
-                    </div>
-                    <!-- /.blog-post-image -->
-
-                    <div class="blog-post-info text-left">
-                      <h3 class="name"><a href="#">Dolorem eum fugiat quo voluptas nulla pariatur</a></h3>
-                      <span class="info">By Saraha Smith &nbsp;|&nbsp; 21 March 2016 </span>
-                      <p class="text">Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium</p>
-                      <a href="#" class="lnk btn btn-primary">Read more</a> </div>
-                    <!-- /.blog-post-info -->
-
-                  </div>
-                  <!-- /.blog-post -->
-                </div>
-                <!-- /.item -->
-
-                <div class="item">
-                  <div class="blog-post">
-                    <div class="blog-post-image">
-                      <div class="image"> <a href="blog.html"><img src="assets/images/blog-post/post2.jpg" alt=""></a> </div>
-                    </div>
-                    <!-- /.blog-post-image -->
-
-                    <div class="blog-post-info text-left">
-                      <h3 class="name"><a href="#">Dolorem eum fugiat quo voluptas nulla pariatur</a></h3>
-                      <span class="info">By Saraha Smith &nbsp;|&nbsp; 21 March 2016 </span>
-                      <p class="text">Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium</p>
-                      <a href="#" class="lnk btn btn-primary">Read more</a> </div>
-                    <!-- /.blog-post-info -->
-
-                  </div>
-                  <!-- /.blog-post -->
-                </div>
-                <!-- /.item -->
-
-                <div class="item">
-                  <div class="blog-post">
-                    <div class="blog-post-image">
-                      <div class="image"> <a href="blog.html"><img src="assets/images/blog-post/post1.jpg" alt=""></a> </div>
-                    </div>
-                    <!-- /.blog-post-image -->
-
-                    <div class="blog-post-info text-left">
-                      <h3 class="name"><a href="#">Dolorem eum fugiat quo voluptas nulla pariatur</a></h3>
-                      <span class="info">By Saraha Smith &nbsp;|&nbsp; 21 March 2016 </span>
-                      <p class="text">Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium</p>
-                      <a href="#" class="lnk btn btn-primary">Read more</a> </div>
-                    <!-- /.blog-post-info -->
-
-                  </div>
-                  <!-- /.blog-post -->
-                </div>
-                <!-- /.item -->
-
+                    <!-- /.item -->
+                @endforeach
               </div>
               <!-- /.owl-carousel -->
             </div>

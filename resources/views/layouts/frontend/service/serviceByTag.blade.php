@@ -112,7 +112,7 @@ Home | Online Social media Market
                                             <span class="fa fa-star {{$service->reviews->sum('star')/$service->reviews->count() > 2.5 ? 'checked' : ''}}"></span>
                                             <span class="fa fa-star {{$service->reviews->sum('star')/$service->reviews->count() > 3.5 ? 'checked' : ''}}"></span>
                                             <span class="fa fa-star {{$service->reviews->sum('star')/$service->reviews->count() > 4.5 ? 'checked' : ''}}"></span>
-                                            <span>{{ $service->reviews->sum('star')/ $service->reviews->count()}}</span>
+                                            <span>{{ $service->reviews->count() > 0 ? round($service->reviews->sum('star')/$service->reviews->count(),1) : 'No Reviews'}}</span>
                                         </div>
                                     @else
                                             <span class="fa fa-star"></span>

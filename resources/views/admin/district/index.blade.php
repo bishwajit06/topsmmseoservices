@@ -15,7 +15,7 @@
                     <div class="content-panel">
                         <table class="table table-striped table-advance table-hover">
                             <h4><i class="fa fa-angle-right"></i> <a href="{{route('admin.district.create')}}" class="btn btn-theme"> Add District</a></h4>
-                            <hr>
+                            <br>
                             <thead>
                             <tr>
                                 <th><i class="fa fa-bullhorn"></i> SN</th>
@@ -31,7 +31,6 @@
                                 <td class="hidden-phone"> {{$district->name}} </td>
                                 <td class="hidden-phone"> {{$district->division->name}} </td>
                                 <td>
-                                    <a href="{{route('admin.district.show',$district->id)}}" class="btn btn-success btn-xs"><i class="fa fa-check"></i></a>
                                     <a href="{{route('admin.district.edit',$district->id)}}" class="btn btn-primary btn-xs"><i class="fa fa-pencil"></i></a>
                                     <button class="btn btn-danger btn-xs" onclick="deleteDistrict({{ $district->id }})"><i class="fa fa-trash-o "></i></button>
                                     <form id="delete-form-{{ $district->id }}" action="{{ route('admin.district.destroy',$district->id) }}" method="post" style="display:none;">
@@ -56,7 +55,6 @@
 @push('js')
     <!-- js placed at the end of the document so the pages load faster -->
 
-    <script type="text/javascript" language="javascript" src="{{asset('assets/backend/lib/advanced-datatable/js/jquery.js')}}"></script>
     <script type="text/javascript" language="javascript" src="{{asset('assets/backend/lib/advanced-datatable/js/jquery.dataTables.js')}}"></script>
     <script type="text/javascript" src="{{asset('assets/backend/lib/advanced-datatable/js/DT_bootstrap.js')}}"></script>
 

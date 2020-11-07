@@ -40,7 +40,7 @@
                         <div class="showback">
                             <!-- Button trigger modal -->
                             <button class="btn btn-theme pull-right" data-toggle="modal" data-target="#myModal">
-                            Add New Slider
+                            Add New Tag
                             </button>
                             <!-- Modal -->
                             <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">

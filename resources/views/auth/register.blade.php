@@ -32,7 +32,7 @@
                         <div class="col-md-6 col-sm-6 create-new-account">
                             <div class="form-group">
                                 <label class="info-title" for="first_name">First Name <span>*</span></label>
-                                <input type="text" class="form-control @error('first_name') is-invalid @enderror unicase-form-control text-input" id="first_name" name="first_name" value="{{ old('first_name') }}" required autocomplete="first_name" autofocus >
+                                <input type="text" class="form-control @error('first_name') is-invalid @enderror unicase-form-control text-input" id="first_name" name="first_name" value="{{ old('first_name') }}" autocomplete="first_name" autofocus >
                                 @error('first_name')
                                 <span class="invalid-feedback" role="alert">
                                             <strong>{{ $message }}</strong>
@@ -41,7 +41,7 @@
                             </div>
                             <div class="form-group">
                                 <label class="info-title" for="username">Username <span>*</span></label>
-                                <input type="text" class="form-control @error('username') is-invalid @enderror unicase-form-control text-input" id="username" name="username" value="{{ old('username') }}" required autocomplete="username" autofocus >
+                                <input type="text" class="form-control @error('username') is-invalid @enderror unicase-form-control text-input" id="username" name="username" value="{{ old('username') }}" autocomplete="username" autofocus >
                                 @error('username')
                                 <span class="invalid-feedback" role="alert">
                                             <strong>{{ $message }}</strong>
@@ -50,7 +50,7 @@
                             </div>
                             <div class="form-group">
                                 <label class="info-title" for="password">Password <span>*</span></label>
-                                <input type="password" class="form-control @error('password') is-invalid @enderror unicase-form-control text-input" id="password" name="password" required autocomplete="new-password">
+                                <input type="password" class="form-control @error('password') is-invalid @enderror unicase-form-control text-input" id="password" name="password" autocomplete="new-password">
                                 @error('password')
                                 <span class="invalid-feedback" role="alert">
                                             <strong>{{ $message }}</strong>
@@ -59,7 +59,7 @@
                             </div>
                             <div class="form-group">
                                 <label class="info-title" for="division">Division <span>*</span></label>
-                                <select class="form-control @error('division') is-invalid @enderror unicase-form-control text-input" id="division_id" name="division" required autocomplete="division">
+                                <select class="form-control @error('division') is-invalid @enderror unicase-form-control text-input" id="division_id" name="division" autocomplete="division">
                                     <option value="" selected>Select Division</option>
                                     @foreach($divisions as $division)
                                         <option value="{{$division->id}}">{{$division->name}}</option>
@@ -73,7 +73,7 @@
                             </div>
                             <div class="form-group">
                                 <label class="info-title" for="street_address">Street Address <span>*</span></label>
-                                <textarea id="about" name="street_address" class="form-control @error('street_address') is-invalid @enderror unicase-form-control text-input" rows="1" required autocomplete="street_address" autofocus>{{ old('street_address') }}</textarea>
+                                <textarea id="about" name="street_address" class="form-control @error('street_address') is-invalid @enderror unicase-form-control text-input" rows="1" autocomplete="street_address" autofocus>{{ old('street_address') }}</textarea>
                                 @error('street_address')
                                 <span class="invalid-feedback" role="alert">
                                             <strong>{{ $message }}</strong>
@@ -88,7 +88,7 @@
                         <div class="col-md-6 col-sm-6 create-new-account">
                             <div class="form-group">
                                 <label class="info-title" for="name">Last Name <span>*</span></label>
-                                <input type="text" class="form-control @error('last_name') is-invalid @enderror unicase-form-control text-input" id="last_name" name="last_name" value="{{ old('last_name') }}" required autocomplete="last_name" autofocus >
+                                <input type="text" class="form-control @error('last_name') is-invalid @enderror unicase-form-control text-input" id="last_name" name="last_name" value="{{ old('last_name') }}" autocomplete="last_name" autofocus >
                                 @error('last_name')
                                 <span class="invalid-feedback" role="alert">
                                         <strong>{{ $message }}</strong>
@@ -97,7 +97,7 @@
                             </div>
                             <div class="form-group">
                                 <label class="info-title" for="email">Email Address <span>*</span></label>
-                                <input type="email" class="form-control @error('email') is-invalid @enderror unicase-form-control text-input" id="email" name="email" value="{{ old('email') }}" required autocomplete="email">
+                                <input type="email" class="form-control @error('email') is-invalid @enderror unicase-form-control text-input" id="email" name="email" value="{{ old('email') }}" autocomplete="email">
                                 @error('email')
                                 <span class="invalid-feedback" role="alert">
                                         <strong>{{ $message }}</strong>
@@ -106,11 +106,11 @@
                             </div>
                             <div class="form-group">
                                 <label class="info-title" for="password-confirm">Confirm Password <span>*</span></label>
-                                <input type="password" class="form-control unicase-form-control text-input" id="password-confirm" name="password_confirmation" required autocomplete="new-password">
+                                <input type="password" class="form-control unicase-form-control text-input" id="password-confirm" name="password_confirmation" autocomplete="new-password">
                             </div>
                             <div class="form-group">
                                 <label class="info-title" for="district">District <span>*</span></label>
-                                <select class="form-control @error('district') is-invalid @enderror unicase-form-control text-input" id="district_id" name="district" required autocomplete="district">
+                                <select class="form-control @error('district') is-invalid @enderror unicase-form-control text-input" id="district_id" name="district" autocomplete="district">
                                     <option value="" selected>Select District</option>
                                     @foreach($districts as $district)
                                         <option value="{{$district->id}}">{{$district->name}}</option>
@@ -124,7 +124,7 @@
                             </div>
                             <div class="form-group">
                                 <label class="info-title" for="phone">Phone Number <span>*</span></label>
-                                <input type="text" class="form-control @error('phone') is-invalid @enderror unicase-form-control text-input" id="phone" name="phone" value="{{ old('phone') }}" required autocomplete="phone" autofocus >
+                                <input type="text" class="form-control @error('phone') is-invalid @enderror unicase-form-control text-input" id="phone" name="phone" value="{{ old('phone') }}" autocomplete="phone" autofocus >
                                 @error('phone')
                                 <span class="invalid-feedback" role="alert">
                                             <strong>{{ $message }}</strong>

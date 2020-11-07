@@ -39,7 +39,7 @@
                         <div class="row">
                             <div class="col-md-3 profile-text mt mb centered">
                               <div class="profile-pic">
-                                  <p>
+                                  <p style="text-align: -webkit-center;">
                                       @if ($user->image)
                                           <img src="{{ asset('storage/profile/'.$user->image) }}" alt="{{$user->name}}" />
                                           @else
@@ -50,18 +50,21 @@
                             </div>
                             <!-- /col-md-4 -->
                             <div class="col-md-5 profile-text">
-                              <h3>{{ $user->first_name }} {{ $user->last_name }}</h3>
+                                <br><br>
+                                <h2 style="color: #4ECDC4; font-size:22px; font-weight:700">{{ $user->first_name }} {{ $user->last_name }}</h2>
+                              <br>
                               <h6>
                                   @if ($user->status == 1)
                                   Main Administrator
                                   @else
-                                  user
+                                  Author
                                   @endif
                               </h6>
                               <p>{{ $user->about }}</p>
                               <br>
                               <p><strong>Email: </strong>{{ $user->email }}</p>
                               <p><strong>Phone: </strong>{{ $user->phone }}</p>
+                              <br><br>
                               <button class="btn btn-theme" data-toggle="modal" data-target="#myModal">
                                 Update Profile
                               </button>

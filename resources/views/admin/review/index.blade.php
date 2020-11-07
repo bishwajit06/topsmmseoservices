@@ -16,7 +16,7 @@
                         <div class="adv-table">
                             <table class="table table-striped table-advance table-hover" id="hidden-table-info">
                                 <h4><i class="fa fa-angle-right"></i> <a href="{{route('admin.review.create')}}" class="btn btn-theme"> Add Review</a></h4>
-                                <hr>
+                                <br>
                                 <thead>
                                 <tr>
                                     <th>SN</th>
@@ -46,12 +46,12 @@
                                         {{ Str::limit($review->review,100) }}
                                     </td>
                                     <td>
-                                        {{$review->service->name}}
+                                        <a target="_blank" href="{{ route('service.detail',$review->service->slug)}}">{{$review->service->name}}</a>
                                     </td>
 
                                     <td>{{$review->star}}</td>
                                     <td>
-                                        <a href="{{route('admin.review.show',$review->id)}}" class="btn btn-success btn-xs"><i class="fa fa-check"></i></a>
+                                        <a target="_blank" href="{{ route('service.detail',$review->service->slug)}}" class="btn btn-success btn-xs"><i class="fa fa-check"></i></a>
                                         <a href="{{route('admin.review.edit',$review->id)}}" class="btn btn-primary btn-xs"><i class="fa fa-pencil"></i></a>
                                         <button class="btn btn-danger btn-xs" onclick="deleteReview({{ $review->id }})"><i class="fa fa-trash-o "></i></button>
                                         <form id="delete-form-{{ $review->id }}" action="{{ route('admin.review.destroy',$review->id) }}" method="post" style="display:none;">

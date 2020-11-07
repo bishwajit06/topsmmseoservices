@@ -427,6 +427,7 @@ ul.sidebar-menu li a.active i {
     padding-bottom: 15px;
     padding-top: 0px;
     width: 100%;
+    min-height: 90vh;
 }
 
 a.logo {
@@ -838,7 +839,7 @@ ul.top-menu > li > a:hover, ul.top-menu > li > a:focus {
 .custom-bar-chart {
     height: 290px;
     margin-top: 20px;
-    margin-left: 10px;
+    margin-left: 60px;
     position: relative;
     border-bottom: 1px solid #c9cdd7;
 }
@@ -929,17 +930,33 @@ PANELS CONFIGURATIONS
 /*Panel Size*/
 
 .pn {
-	height: 250px;
+	height: 135px;
 	box-shadow: 0 2px 1px rgba(0, 0, 0, 0.2);
 }
 
 
 /*Grey Panel*/
+.dashBoardInfoTitle{
+    font-size: 16px;
+    font-weight: 500;
+    color: #797575;
+    margin-top: 5px;
+}
 
 .grey-panel {
 	text-align: center;
 	background: #dfdfe1;
 }
+
+.grey-panel i{
+    font-size: 30px;
+    color: #4ECDC4;
+}
+
+.grey-panel i:hover{
+    color: #D0215F;
+}
+
 .grey-panel .grey-header {
 	background: #ccd1d9;
 	padding: 3px;
@@ -947,7 +964,8 @@ PANELS CONFIGURATIONS
 }
 .grey-panel h5 {
 	font-weight: 200;
-	margin-top: 10px;
+    margin-top: 10px;
+    margin-bottom: 10px;
 }
 .grey-panel p {
 	margin-left: 5px;
@@ -1081,8 +1099,7 @@ PANELS CONFIGURATIONS
 .content-panel {
 	background: #ffffff;
 	box-shadow: 0px 3px 2px #aab2bd;
-	padding-top: 15px;
-	padding-bottom: 5px;
+	padding: 20px 15px 5px 15px;
 }
 .content-panel h4 {
 	margin-left: 10px;
@@ -1624,8 +1641,7 @@ PANELS CONFIGURATIONS
 
 /* Grid Showcase*/
 
-	margin-bottom: 15px;
-}
+
 
 .show-grid [class^=col-] {
 	padding-top: 10px;
@@ -3484,3 +3500,15 @@ ul.chat-available-user li a:hover {
 #copyrights a {
   color: #fff;
 }
+
+
+.w-full {
+    margin-top: 50px;
+
+}
+
+.wrapper h3:first-child{
+    font-size: 18px;
+    margin-top: 30px;
+}
+

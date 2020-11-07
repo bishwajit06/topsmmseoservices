@@ -36,8 +36,8 @@ class ResetPasswordController extends Controller
         {
             return $this->redirectTo = route('admin.dashboard');
         }else{
-            return $this->redirectTo = route('customer.dashboard');
+            return $this->redirectTo = route('author.dashboard');
         }
-        
+
     }
 }

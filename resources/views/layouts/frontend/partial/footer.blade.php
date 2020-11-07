@@ -14,7 +14,7 @@
                 <li class="media">
                   <div class="pull-left"> <span class="icon fa-stack fa-lg"> <i class="fa fa-map-marker fa-stack-1x fa-inverse"></i> </span> </div>
                   <div class="media-body">
-                    <p>ThemesGround, 789 Main rd, Anytown, CA 12345 USA</p>
+                    <p>ThemesGround, 789 Main rd <br> Anytown, CA 12345 USA</p>
                   </div>
                 </li>
                 <li class="media">
@@ -34,61 +34,63 @@
           </div>
           <!-- /.col -->
 
-          <div class="col-xs-12 col-sm-6 col-md-3">
+          <div class="col-xs-12 col-sm-6 col-md-4">
             <div class="module-heading">
-              <h4 class="module-title">Customer Service</h4>
+              <h4 class="module-title">Latest Service</h4>
             </div>
             <!-- /.module-heading -->
 
             <div class="module-body">
-              <ul class='list-unstyled'>
-                <li class="first"><a href="#" title="Contact us">My Account</a></li>
-                <li><a href="#" title="About us">Order History</a></li>
-                <li><a href="#" title="faq">FAQ</a></li>
-                <li><a href="#" title="Popular Searches">Specials</a></li>
-                <li class="last"><a href="#" title="Where is my order?">Help Center</a></li>
-              </ul>
+                <div class="footer-service">
+                    @foreach (App\Service::latest()->take('2')->get() as $service)
+                    <div>
+                        <a href="{{ route('service.detail',$service->slug)}}">
+                            @if ($service->images->first()->image)
+                            <img src="{{asset('storage/services/'.$service->images->first()->image)}}" alt="">
+                            @else
+                            <img src="{{asset('assets/backend/img/demo_image.png')}}" alt="" />
+                            @endif
+                        </a>
+                    </div>
+                    <strong><a href="{{ route('service.detail',$service->slug)}}" title="Contact us">{{$service->name}}</a></strong>
+                    <p>{!!  substr(strip_tags($service->description), 0, 80) !!} ...</p>
+                    </li>
+                    @endforeach
+                </div>
             </div>
             <!-- /.module-body -->
           </div>
           <!-- /.col -->
 
-          <div class="col-xs-12 col-sm-6 col-md-3">
+          <div class="col-xs-12 col-sm-6 col-md-5">
             <div class="module-heading">
-              <h4 class="module-title">Corporation</h4>
+              <h4 class="module-title">Latest Blog Post</h4>
             </div>
             <!-- /.module-heading -->
 
             <div class="module-body">
-              <ul class='list-unstyled'>
-                <li class="first"><a title="Your Account" href="#">About us</a></li>
-                <li><a title="Information" href="#">Customer Service</a></li>
-                <li><a title="Addresses" href="#">Company</a></li>
-                <li><a title="Addresses" href="#">Investor Relations</a></li>
-                <li class="last"><a title="Orders History" href="#">Advanced Search</a></li>
-              </ul>
+                <div class="footer-service">
+                    @foreach (App\Post::latest()->take('2')->get() as $post)
+                    <div>
+                        <a href="{{ route('post.details',$post->slug)}}">
+                            @if ($post->image)
+                            <img src="{{asset('storage/post/'.$post->image)}}" alt="">
+                            @else
+                            <img src="{{asset('assets/backend/img/demo_image.png')}}" alt="" />
+                            @endif
+                        </a>
+                    </div>
+                    <strong><a href="{{ route('post.details',$post->slug)}}" title="Contact us">{{$post->title}}</a></strong>
+                    <p>{!!  substr(strip_tags($post->body), 0, 100) !!} ...</p>
+                    </li>
+                    @endforeach
+                </div>
             </div>
             <!-- /.module-body -->
           </div>
           <!-- /.col -->
 
-          <div class="col-xs-12 col-sm-6 col-md-3">
-            <div class="module-heading">
-              <h4 class="module-title">Why Choose Us</h4>
-            </div>
-            <!-- /.module-heading -->
 
-            <div class="module-body">
-              <ul class='list-unstyled'>
-                <li class="first"><a href="#" title="About us">Shopping Guide</a></li>
-                <li><a href="#" title="Blog">Blog</a></li>
-                <li><a href="#" title="Company">Company</a></li>
-                <li><a href="#" title="Investor Relations">Investor Relations</a></li>
-                <li class=" last"><a href="#" title="Suppliers">Contact Us</a></li>
-              </ul>
-            </div>
-            <!-- /.module-body -->
-          </div>
         </div>
       </div>
     </div>
@@ -96,19 +98,21 @@
       <div class="container">
         <div class="col-xs-12 col-sm-4 no-padding social">
           <ul class="link">
-            <li class="fb pull-left"><a target="_blank" rel="nofollow" href="#" title="Facebook"></a></li>
-            <li class="tw pull-left"><a target="_blank" rel="nofollow" href="#" title="Twitter"></a></li>
-            <li class="googleplus pull-left"><a target="_blank" rel="nofollow" href="#" title="GooglePlus"></a></li>
-            <li class="rss pull-left"><a target="_blank" rel="nofollow" href="#" title="RSS"></a></li>
-            <li class="pintrest pull-left"><a target="_blank" rel="nofollow" href="#" title="PInterest"></a></li>
-            <li class="linkedin pull-left"><a target="_blank" rel="nofollow" href="#" title="Linkedin"></a></li>
-            <li class="youtube pull-left"><a target="_blank" rel="nofollow" href="#" title="Youtube"></a></li>
+              @php
+                  $social = App\Social::where('id', 1)->first();
+              @endphp
+            <li class="fb pull-left"><a target="_blank" rel="nofollow" href="{{$social->facebook}}" title="Facebook"></a></li>
+            <li class="tw pull-left"><a target="_blank" rel="nofollow" href="{{$social->twitter}}" title="Twitter"></a></li>
+            <li class="instagram pull-left"><a target="_blank" rel="nofollow" href="{{$social->instagram}}" title="instagram"></a></li>
+            <li class="rss pull-left"><a target="_blank" rel="nofollow" href="{{$social->facebook}}" title="RSS"></a></li>
+            <li class="pintrest pull-left"><a target="_blank" rel="nofollow" href="{{$social->pinterest}}" title="PInterest"></a></li>
+            <li class="linkedin pull-left"><a target="_blank" rel="nofollow" href="{{$social->linkedin}}" title="Linkedin"></a></li>
+            <li class="youtube pull-left"><a target="_blank" rel="nofollow" href="{{$social->youtube}}" title="Youtube"></a></li>
           </ul>
         </div>
         <div class="col-xs-12 col-sm-5 no-padding">
           <div class="copyright-text">
-          <p>| Copyright © 2018-2020 TopSMMServices<br>
-          | All Rights Reserved. Develop by <a href="https://fixdesignbd.com" target="_blank">Fix Design BD</a></p>
+          <p>{!!  $setting->footer_copyright !!}</a></p>
           </div>
           <!-- /.payment-methods -->
         </div>

@@ -16,7 +16,7 @@
                         <div class="adv-table">
                             <table class="table table-striped table-advance table-hover" id="hidden-table-info">
                                 <h4><i class="fa fa-angle-right"></i> <a href="{{route('admin.category.create')}}" class="btn btn-theme"> Add Category</a></h4>
-                                <hr>
+                                <br>
                                 <thead>
                                 <tr>
                                     <th>SN</th>
@@ -67,7 +67,6 @@
                                     </td>
                                     <td class="hidden-phone"> {{ Str::limit($category->description,40) }}</td>
                                     <td>
-                                        <a href="{{route('admin.category.show',$category->id)}}" class="btn btn-success btn-xs"><i class="fa fa-check"></i></a>
                                         <a href="{{route('admin.category.edit',$category->id)}}" class="btn btn-primary btn-xs"><i class="fa fa-pencil"></i></a>
                                         <button class="btn btn-danger btn-xs" onclick="deleteCategory({{ $category->id }})"><i class="fa fa-trash-o "></i></button>
                                         <form id="delete-form-{{ $category->id }}" action="{{ route('admin.category.destroy',$category->id) }}" method="post" style="display:none;">

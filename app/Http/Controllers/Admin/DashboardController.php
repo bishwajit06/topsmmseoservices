@@ -24,6 +24,7 @@ class DashboardController extends Controller
 
     public function menu()
     {
+
         return view('admin.menu.index');
     }
 
@@ -43,7 +44,7 @@ class DashboardController extends Controller
         $user = User::find(Auth::id());
         $this->validate($request,[
             'first_name' => 'required|string|max:40',
-            'last_name' => 'nullable|string|max:40',
+            'last_name' => 'required|string|max:40',
 
             'division' => 'required|numeric',
             'district' => 'required|numeric',

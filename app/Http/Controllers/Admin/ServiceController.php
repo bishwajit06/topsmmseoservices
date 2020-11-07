@@ -174,47 +174,57 @@ class ServiceController extends Controller
 
         $images = $request->image;
 
-       //dd($images);
+        //dd($request->image_id);
+        //dd($images);
 
         if (isset($images)){
             if (count($images) > 0){
                 foreach ($images as $image){
-                    foreach($service->images as $img){
+
                     $currentdate = Carbon::now()->toDateString();
                     $slug = $service->slug;
                     $imageName = $slug.'-'.$currentdate.'-'.uniqid().'.'.$image->getClientOriginalExtension();
 
-                    // Check Category directory is exists
-                        if (!Storage::disk('public')->exists('services'))
-                        {
-                            Storage::disk('public')->makeDirectory('services');
+                    foreach($service->images as $img){
+
+                            if (!Storage::disk('public')->exists('services'))
+                            {
+                                Storage::disk('public')->makeDirectory('services');
+                            }
+
+                            if (Storage::disk('public')->exists('services/'.$img->image))
+                            {
+                                Storage::disk('public')->delete('services/'.$img->image);
+                            }
+
+                            $imageData = ServiceImage::find($img->id);
+
+                            if ($imageData) {
+                                $imageData->delete();
+                            }
+
                         }
-                        //         Delete old image
-                        if (Storage::disk('public')->exists('services/'.$img->image))
-                        {
-                            Storage::disk('public')->delete('services/'.$img->image);
-                        }
 
-                        $serviceImage = Image::make($image)->resize(600,600)->stream();
-                        Storage::disk('public')->put('services/'.$imageName,$serviceImage);
+                    $serviceImage = Image::make($image)->resize(600,600)->stream();
+                    Storage::disk('public')->put('services/'.$imageName,$serviceImage);
 
-                        $serviceImage = ServiceImage::find($img->id);
-                        $serviceImage->service_id = $service->id;
-                        $serviceImage->image = $imageName;
-                        $serviceImage->save();
-
-                    }
+                    $serviceImage = new ServiceImage();
+                    $serviceImage->service_id = $service->id;
+                    $serviceImage->image = $imageName;
+                    $serviceImage->save();
 
                 }
 
             }
         }else{
 
-
-
         }
+
+
         $service->tags()->sync($request->tags);
-        Toastr::success('Product Successfully Saved', 'Success');
+        //Toastr::success('Service Successfully updated', 'Success');
+        notify()->success('Service Successfully updated');
+        //connectify('success', 'Connection Found', 'Success Message Here');
         return redirect()->route('admin.service.index');
     }
 

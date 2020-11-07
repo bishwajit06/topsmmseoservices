@@ -100,7 +100,7 @@ class TagController extends Controller
         $tag = Tag::find($id);
         if ($tag) {
             $tag->delete();
-            Toastr::success('slider Successfully Deleted', 'Success');
+            Toastr::success('Tag Successfully Deleted', 'Success');
             return redirect()->back();
         }
         Toastr::error('Tag Not Deleted', 'Error');
